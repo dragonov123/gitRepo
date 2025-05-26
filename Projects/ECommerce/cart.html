@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+:root {
+    --base-color: #1A2E45;
+    --light-color: #F9F9F9;
+    --dark-color: #2D2D2D;
+    --neutral-color: #D1D5DB;
+    --accent-color: #F5A623;
+    --primary-gradient: linear-gradient(135deg, #1A2E45 0%, #4A90E2 100%);
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--neutral-color);
+    color: var(--dark-color);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: none;
+}
+nav {
+    background: var(--base-color);
+    color: var(--light-color);
+    
+    box-shadow: 0 2px 8px rgba(26, 46, 69, 0.08);
+}
+nav a {
+    color: var(--light-color);
+
+    transition: color 0.2s;
+}
+nav a:hover { color: var(--accent-color); }
+nav {
+  padding: 10px 20px;
+        
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+}
+
+nav ul {
+  list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+}
+
+nav li {
+  margin: 0 15px;
+        display: inline;
+        cursor: pointer;
+        transition: all 0.3s ease;
+}
+
+nav a {
+  text-decoration: none;
+        color: white;
+        font-weight: bold;
+        position: relative;
+}
+
+nav a::after {
+    content: "";
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--neutral-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+nav .dropdown {
+    position: relative;
+}
+nav .dropdown-content {
+  display: none;
+        position: absolute;
+        background-color: var(--base-color);
+        min-width: 180px;
+        z-index: 1;
+        right: -55px;
+        margin-top: 10px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+}
+nav .dropdown-content a {
+  
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+}
+
+nav .dropdown-content a:hover {
+        background-color: #1A2E45;
+      }
+.home{
+    cursor: pointer;
+}
+.productsNav{
+    cursor: pointer;
+}
+.aboutNav{
+    cursor: pointer;
+}
+.contactNav{
+    cursor: pointer;
+}
+.privacyPolicy{
+    cursor: pointer;
+}
+.terms{
+    cursor: pointer;
+}
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 0.5em;
+}
+.cart-title {
+    font-size: 2rem;
+    color: var(--base-color);
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+.cart-table-container {
+    width: 100%;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(26, 46, 69, 0.10);
+    padding: 1.5em;
+    margin-bottom: 2em;
+    overflow-x: auto;
+}
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.cart-table th, .cart-table td {
+    padding: 1em 0.5em;
+    text-align: center;
+}
+.cart-table th {
+    background: var(--base-color);
+    color: var(--light-color);
+    font-weight: 600;
+}
+.cart-table td {
+    border-bottom: 1px solid var(--neutral-color);
+    vertical-align: middle;
+}
+.cart-table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(26, 46, 69, 0.08);
+}
+.cart-table button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 12px;
+    background: var(--base-color);
+    color: var(--light-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    margin: 0 2px;
+}
+.cart-table button:hover {
+    background: var(--accent-color);
+    color: var(--base-color);
+    transform: scale(1.07);
+}
+.summary {
+    width: 100%;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(26, 46, 69, 0.10);
+    padding: 1.5em;
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    font-size: 1.1rem;
+}
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.summary-row span:first-child {
+    color: var(--base-color);
+    font-weight: 600;
+}
+.checkout {
+    padding: 1rem;
+    width: 200px;
+    margin: 1.5em auto 0 auto;
+    border: none;
+    border-radius: 12px;
+    background: var(--base-color);
+    color: var(--light-color);
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(26, 46, 69, 0.07);
+    display: block;
+}
+.checkout:hover {
+    background: var(--accent-color);
+    color: var(--base-color);
+    transform: scale(1.03);
+}
+.empty-cart-message {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    margin: 2em 0;
+    text-align: center;
+}
+
+footer {
+  background-color: var(--base-color);
+    color: var(--light-color);
+}
+
+footer a {
+  color: var(--accent-color);
+}
+
+footer a:hover {
+  color: var(--neutral-color);
+}
+
+
+footer p {
+  color: var(--light-color);
+}
+footer {
+    
+    text-align: center;
+    padding: 20px 0 10px 0;
+    margin-top: auto;
+}
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+footer ul li {
+    padding: 10px 20px;
+}
+footer ul li a {
+    
+    text-decoration: none;
+    font-weight: bold;
+}
+footer ul li a:hover {
+    
+    text-decoration: underline;
+}
+thead th:nth-of-type(1){
+    border-radius: 12px 0 0 12px;
+}
+
+thead th:nth-of-type(7){
+    border-radius: 0 12px 12px 0;
+}
+@media (max-width: 700px) {
+    .cart-table-container, .summary {
+        padding: 0.5em;
+    }
+    .cart-table th, .cart-table td {
+        padding: 0.5em 0.2em;
+        font-size: 0.95rem;
+    }
+    .summary {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 500px) {
+    .cart-title {
+        font-size: 1.2rem;
+    }
+    .checkout {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a class="home">Home</a></li>
+          <li><a class="productsNav">Products</a></li>
+          <li><a class="cartNav">Cart</a></li>
+          
+          <li class="dropdown">
+            
+              <a class="dropBtn">Menu</a>
+              <ul class="dropdown-content">
+                <li><a class="nameDrop"></a></li>
+              <li><a class="loginLogout"></a></li>
+              
+              <li><a class="aboutNav">About Us</a></li>
+          <li><a class="contactNav">Contact Us</a></li>
+              </ul>
+              
+            
+          </li>
+        </ul>
+      </nav>
+    <main>
+        <h1 class="cart-title">Your Shopping Cart</h1>
+        <div class="cart-table-container" style="display:none;">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Image</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Add</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody class="cart-body">
+                    <!-- JS will populate rows here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="summary" style="display:none;">
+            <div class="summary-row"><span>Subtotal:</span> <span class="subtotal"></span></div>
+            <div class="summary-row"><span>GST (18%):</span> <span class="gst"></span></div>
+            <div class="summary-row"><span>Grand Total:</span> <span class="grandTotal"></span></div>
+        </div>
+        <button class="checkout" style="display:none;">Checkout</button>
+        <div class="empty-cart-message" style="display:none;">Your Cart is Empty</div>
+    </main>
+    <footer>
+        <p>&copy; 2025 ECommerce Store. All rights reserved.</p>
+        <ul>
+            <li><a class="privacyPolicy">Privacy Policy</a></li>
+            <li><a class="terms">Terms of Service</a></li>
+        </ul>
+    </footer>
+    <script>
+document.addEventListener("DOMContentLoaded", async function () {
+    // Navigation
+    let username = new URLSearchParams(window.location.search).get("username");
+    document.querySelector(".home").onclick = () => window.location.href = `indexM.html?username=${username}`;
+    document.querySelector(".productsNav").onclick = () => window.location.href = `products.html?username=${username}`;
+    document.querySelector(".aboutNav").onclick = () => window.location.href = `about.html?username=${username}`;
+    document.querySelector(".contactNav").onclick = () => window.location.href = `contact.html?username=${username}`;
+    document.querySelector(".cartNav").onclick = () => window.location.href = `cart.html?username=${username}`;
+    document.querySelector(".privacyPolicy").onclick = () => window.location.href = `privacy.html?username=${username}`;
+    document.querySelector(".terms").onclick = () => window.location.href = `terms.html?username=${username}`;
+
+    // Cart logic
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartfind = cart.find(item => item.username === username);
+    const cartTableContainer = document.querySelector(".cart-table-container");
+    const cartBody = document.querySelector(".cart-body");
+    const summary = document.querySelector(".summary");
+    const subtotalSpan = document.querySelector(".subtotal");
+    const gstSpan = document.querySelector(".gst");
+    const grandTotalSpan = document.querySelector(".grandTotal");
+    const checkoutBtn = document.querySelector(".checkout");
+    const emptyCartMsg = document.querySelector(".empty-cart-message");
+    const loginLogout = document.querySelector(".loginLogout");
+    const nameDrop = document.querySelector(".nameDrop");
+    const menu = document.querySelector(".dropBtn");
+    const dropdownContent = document.querySelector(".dropdown-content");
+
+      // Dropdown menu
+
+    menu.addEventListener("click", function() {
+        const dropdownContent = document.querySelector(".dropdown-content");
+        dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+        
+      });
+      nameDrop.textContent = username ? "Welcome " + username : "Welcome Guest";
+      loginLogout.textContent = username ? "Logout" : "Login";
+      loginLogout.addEventListener("click", function() {
+        if (username) {
+          // Logout logic
+          username = null;
+          window.location.href = "index.html";
+        } else {
+          // Redirect to login page
+          window.location.href = "index.html";
+        }
+      });
+      document.addEventListener("click", function(event) {
+        const dropdownContent = document.querySelector(".dropdown-content");
+        if (!event.target.closest(".dropdown") && dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        }
+      });
+
+    if (!cartfind || !cartfind.id.length) {
+        emptyCartMsg.style.display = "block";
+        cartTableContainer.style.display = "none";
+        summary.style.display = "none";
+        checkoutBtn.style.display = "none";
+        return;
+    }
+
+    // Count quantities
+    const counts = {};
+    cartfind.id.forEach(id => { counts[id] = (counts[id] || 0) + 1; });
+    const uniqueIds = [...new Set(cartfind.id)];
+
+    let totalPrice = 0;
+    let productDataCache = {};
+
+    // Fetch all product data in parallel
+    await Promise.all(uniqueIds.map(async id => {
+        const url = `https://api.freeapi.app/api/v1/public/randomproducts/${id}`;
+        try {
+            const res = await fetch(url);
+            const dat = await res.json();
+            productDataCache[id] = dat.data;
+        } catch (e) {
+            productDataCache[id] = null;
+        }
+    }));
+
+    // Populate table
+    cartBody.innerHTML = "";
+    uniqueIds.forEach(id => {
+        const data = productDataCache[id];
+        if (!data) return;
+        const qty = counts[id];
+        const row = document.createElement("tr");
+
+        // Product Name
+        const nameTd = document.createElement("td");
+        nameTd.textContent = data.title;
+
+        // Image
+        const imgTd = document.createElement("td");
+        const img = document.createElement("img");
+        img.src = data.thumbnail;
+        img.alt = data.title;
+        imgTd.appendChild(img);
+
+        // Quantity
+        const qtyTd = document.createElement("td");
+        qtyTd.textContent = qty;
+
+        // Price
+        const priceTd = document.createElement("td");
+        priceTd.textContent = `$${data.price}`;
+
+        // Total
+        const totalTd = document.createElement("td");
+        totalTd.textContent = `$${(data.price * qty).toFixed(2)}`;
+
+        // Add button
+        const addTd = document.createElement("td");
+        const addBtn = document.createElement("button");
+        addBtn.textContent = "+";
+        addBtn.onclick = () => {
+            cartfind.id.push(id);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            window.location.reload();
+        };
+        addTd.appendChild(addBtn);
+
+        // Remove button
+        const removeTd = document.createElement("td");
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "-";
+        removeBtn.onclick = () => {
+            const idx = cartfind.id.indexOf(id);
+            if (idx > -1) {
+                cartfind.id.splice(idx, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                window.location.reload();
+            }
+        };
+        removeTd.appendChild(removeBtn);
+
+        row.append(nameTd, imgTd, qtyTd, priceTd, totalTd, addTd, removeTd);
+        cartBody.appendChild(row);
+
+        totalPrice += data.price * qty;
+    });
+
+    // Summary
+    const gst = totalPrice * 0.18;
+    const grandTotal = totalPrice + gst;
+    subtotalSpan.textContent = `$${totalPrice.toFixed(2)}`;
+    gstSpan.textContent = `$${gst.toFixed(2)}`;
+    grandTotalSpan.textContent = `$${grandTotal.toFixed(2)}`;
+
+    cartTableContainer.style.display = "block";
+    summary.style.display = "flex";
+    checkoutBtn.style.display = "block";
+    emptyCartMsg.style.display = "none";
+
+    checkoutBtn.onclick = () => {
+        window.location.href = `checkout.html?username=${username}`;
+    };
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    transform: scale(0.65);
+    
+}
+
+.navbar{
+    display: inline-flex;
+}
+
+.navitems{
+    display: flex;
+    
+    align-items: center;
+    gap: 2rem;
+    margin-left: 28rem;
+}
+
+.navitems:hover{
+    cursor: pointer;
+    
+}
+::selection{
+    color: red;
+}
+
+h1{
+    display: inline;
+    font-size: 35px;
+    font-weight: 200;
+    
+
+}
+
+.forbold{
+    font-weight: bolder;
+}
+p{
+    font-size: 20px;
+    text-align: center;
+}
+
+.todown{
+    border-radius: 5%;
+    padding: 10px;
+    background-color: rgb(41, 190, 190);
+    color: white;
+    font-weight: 900;
+}
+
+.todown a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.sec1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    gap: 3rem;
+    width: 58vmax;
+    margin-left: 17rem;
+
+    
+}
+
+.sectionimg{
+    scale: 1.8;
+}
+
+.sech3{
+    font-size: 20px;
+}
+.sec1small{
+    font-size: 12px;
+}
+
+.sec2{
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.sec2con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sec3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid{
+    
+    border: 2px solid black;
+    width: 80%;
+    height: auto;
+    
+}
+
+.grids{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    grid-gap: 5px;
+    
+}
+
+.english{
+    width: 17rem;
+    height: 13rem;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    
+    
+    
+}
+
+.sec3eh{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.sec3btn{
+    background-color: #5cb85c;
+    border-radius: 7%;
+    border:none;
+    padding: 8px 16px;
+    
+    
+    
+}
+
+.download{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    
+}
+
+.sec3small{
+    font-size: 7px;
+    margin-top: 30px;
+    
+}

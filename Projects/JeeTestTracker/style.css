@@ -1,0 +1,131 @@
+ /* Styling inspired by the given image */
+ body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+  }
+
+  h1 {
+    text-align: center;
+    color: #5a2e6b;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid #dcdcdc;
+  }
+
+  th {
+    background-color: #d3a3c3;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  td {
+    font-size: 14px;
+    color: #333;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
+  }
+
+  tbody tr:hover {
+    background-color: #e0e7ff;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .add-row {
+    background-color: #5cb85c;
+    color: white;
+  }
+
+  .delete-row {
+    background-color: #d9534f;
+    color: white;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.2);
+  }
+.add-row1{
+    background-color: #5cb85c;
+    color: white;
+    
+}
+.add-row2{
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px;
+    border: none;
+}
+.hidden{
+    display: none;
+}
+#menu{
+    border-radius: 5%;
+    border-width: 10px;
+    border-color: #5cb85c;
+}
+
+#displayselect{
+  color: red;
+}
+
+.add-row3{
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px;
+  border: none; 
+}
+
+.avg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.avgpercentile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.avgmarks{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.avgrank{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}

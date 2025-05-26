@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
+    <link
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+      href="https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png"
+    />
+    <link
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+      href="https://open.spotifycdn.com/cdn/images/favicon16.1c487bff.png"
+    />
+    <link
+      rel="icon"
+      href="https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico"
+    />
+  </head>
+
+
+
+  <body>
+    <div class="nav">
+      <div class="logo">
+        <img class="filter spotifylogo" src="assets/svg/spotifylogo.svg" alt="spotify logo">
+      </div>
+      
+
+
+      <div class="sign">
+        <button class="round-btn home"><img src="assets/svg/home.svg"  alt=""></button>
+        <p class="name"></p>
+        <button class="signup">Sign up</button>
+        <button class="login">Log in</button>
+      </div>
+
+    </div>
+    <div class="container">
+      <div class="left">
+        <div class="library">
+          <div class="library1">
+            <img src="assets/svg/library.svg" alt="">
+            <p>Your Library</p>
+          </div>
+
+          <div class="addition">
+            <img src="assets/svg/addition.svg" alt="">
+          </div>
+          
+        </div>
+
+      <div class="songsleft">
+        
+        
+        
+      </div>
+
+      <div class="legal">
+        <div class="legal1">
+          
+        <p>legal</p>
+        <p>Privacy & Policy</p>
+        <p>Accessibility</p>
+        </div>
+<div class="legal2">
+
+  <p>Safety & Privacy Center</p>
+  <p>Cookies</p>
+  
+</div>
+        <div class="legal3">
+
+          <p>About Ads</p>
+        </div>
+        
+      </div>
+      </div>
+
+
+      <div class="right">
+        <div class="nocoi close">
+
+          <div class="desc">
+            <div>
+              <button class="round-btn back"><img src="assets/svg/arrow-left-02-stroke-rounded.svg" alt=""></button>
+            </div>
+            <div>
+              <img class="descimg" src="assets/img/ab67616d00001e021e63de6489803c2b39e7f8e5.jpeg" alt="">
+            </div>
+          </div>
+
+          <div class="songsright">
+            <ul id="songList">
+              <li class="songname">Amalgam</li><br>
+              <li class="songname">Creative Technology Showreel</li><br>
+              <li class="songname">In Slow Motion Inspiring Ambient Lounge</li><br>
+              <li class="songname">Lazy Day Stylish Furistic Chill</li><br>
+              <li class="songname">Night Detective</li><br>
+              <li class="songname">Nightfall Future Bass Music</li><br>
+              
+            </ul>
+
+
+
+
+            <div class="close">
+              <audio class="nocopyrightsongs" src="assets/music/nocopyrightsongs/Amalgam.mp3"></audio>
+              <audio class="nocopyrightsongs" src="assets/music/nocopyrightsongs/Creative Technology Showreel.mp3"></audio>
+              <audio class="nocopyrightsongs" src="assets/music/nocopyrightsongs/In Slow Motion Inspiring Ambient Lounge.mp3"></audio>
+              <audio class="nocopyrightsongs" src="assets/music/nocopyrightsongs/Lazy Day Stylish Futuristic Chill.mp3"></audio>
+              <audio class="nocopyrightsongs" src="assets/music/nocopyrightsongs/Night Detective.mp3"></audio>
+              <audio class="nocopyrightsongs" src="assets/music/nocopyrightsongs/Nightfall Future Bass Music.mp3"></audio>
+              
+            </div>
+
+
+          </div>
+        </div>
+        <div class="albums">
+          <div class="box" id="noco">
+            <img src="assets/img/ab67616d00001e021e63de6489803c2b39e7f8e5.jpeg" alt="">
+             <button class="round-btn play"><img src="assets/svg/play.svg" alt=""></button>
+            <p class="title">No Copyright Songs</p>
+            <p class="subtitle">Enjoy The Latest No Copyright Songs</p>
+          </div>
+          <!-- <div class="box" id="noco">
+            <img src="assets/img/ab67616d00001e021e63de6489803c2b39e7f8e5.jpeg" alt="">
+             <button class="round-btn play"><img src="assets/svg/play.svg" alt=""></button>
+            <p class="title">No Copyright Songs</p>
+            <p class="subtitle">Enjoy The Latest No Copyright Songs</p>
+          </div>
+           -->
+        </div>
+        <div class="playbar">
+          <div class="duration">
+            <div class="durationp1p">
+              <p class="durationp1"></p>
+            </div>
+            <div class="songplayp">
+              <p class="songplay"></p>
+            </div>
+            <div class="volume">
+              <img class="filter close highvolume" src="assets/svg/volume-high-stroke-rounded.svg" alt="">
+              <img class="filter close lowvolume" src="assets/svg/volume-low-stroke-rounded.svg" alt="">
+              <img class="filter close verylowvolume" src="assets/svg/volume-mute-01-stroke-rounded.svg" alt="">
+              <img class="filter close mute" src="assets/svg/volume-mute-02-stroke-rounded.svg" alt="">
+              <input class="close" type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
+            </div>
+            <div class="audioloopp">
+              <button class="close round-btn2 audioloop"><img src="assets/svg/arrow-reload-horizontal-stroke-rounded.svg" alt=""></button>
+            </div>
+            <div class="durationp2p">
+              <p class="durationp2"></p>
+            </div>
+          </div>
+          
+          
+          <div class="lineand">
+
+            <div class="line">
+              <input type="range" name="" id="seekbar" value="0" min="0" max="100">
+            </div>
+          </div>
+          
+          <div class="playsong">
+            <button class="round-btn1 previous"><img src="assets/svg/previous-stroke-rounded.svg" alt=""></button>
+            <button class="round-btn1 close playpause pausesong"><img  src="assets/svg/pause-stroke-rounded.svg" alt=""></button>
+            <button class="round-btn1 playpause playsong1"><img  src="assets/svg/play.svg" alt=""></button>
+            <button class="round-btn1 next"><img src="assets/svg/next-stroke-rounded.svg" alt=""></button>
+          </div>
+          
+          
+        </div>
+        
+      </div>
+
+    </div>
+
+    <div class="signuppage close">
+    <div class="container1">
+        <div class="logo">
+            <img class="filter" src="assets/svg/spotifylogo.svg" alt="">
+        </div>
+        <div class="headline">
+            <p class="headlinec">Sign up to start listening</p>
+        </div>
+        <div class="username">
+            <label for="username">Username</label><br><br>
+            <input type="text" id="username" placeholder="Enter your username" required>
+            <p class="alertu"></p>
+        </div>
+        <div class="password">
+            <label for="password">Password</label><br><br>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <p class="alertp"></p>
+                <svg class="filter" id="showPassword" class="position" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display: none;">
+                  <path d="M12 4.5C7.30558 4.5 3.36022 7.42644 1.5 12C3.36022 16.5736 7.30558 19.5 12 19.5C16.6944 19.5 20.6398 16.5736 22.5 12C20.6398 7.42644 16.6944 4.5 12 4.5ZM12 17.5C8.96436 17.5 6.5 15.0356 6.5 12C6.5 8.96436 8.96436 6.5 12 6.5C15.0356 6.5 17.5 8.96436 17.5 12C17.5 15.0356 15.0356 17.5 12 17.5ZM12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5Z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="filter" class="position" id="hidePassword" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
+                    <path d="M19.439 15.439C20.3636 14.5212 21.0775 13.6091 21.544 12.955C21.848 12.5287 22 12.3155 22 12C22 11.6845 21.848 11.4713 21.544 11.045C20.1779 9.12944 16.6892 5 12 5C11.0922 5 10.2294 5.15476 9.41827 5.41827M6.74742 6.74742C4.73118 8.1072 3.24215 9.94266 2.45604 11.045C2.15201 11.4713 2 11.6845 2 12C2 12.3155 2.15201 12.5287 2.45604 12.955C3.8221 14.8706 7.31078 19 12 19C13.9908 19 15.7651 18.2557 17.2526 17.2526" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M9.85786 10C9.32783 10.53 9 11.2623 9 12.0711C9 13.6887 10.3113 15 11.9289 15C12.7377 15 13.47 14.6722 14 14.1421" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M3 3L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              
+
+        </div>
+        <div class="nextp">
+          <button class="next1" type="submit">Next</button>
+      </div>
+  
+    
+    </div>    
+
+    </div>
+
+
+    
+    <script src="script.js"></script>
+
+  </body>
+</html>

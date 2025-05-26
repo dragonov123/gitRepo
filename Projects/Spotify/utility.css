@@ -1,0 +1,11 @@
+.filter{
+    filter: invert(1);
+}
+
+.fillwhite{
+    fill: white;
+}
+
+.flex{
+    display: flex;
+}

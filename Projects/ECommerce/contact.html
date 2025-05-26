@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}  
+:root {
+    --base-color: #1A2E45;
+    --light-color: #F9F9F9;
+    --dark-color: #2D2D2D;
+    --neutral-color: #D1D5DB;
+    --accent-color: #F5A623;
+    --primary-gradient: linear-gradient(135deg, #1A2E45 0%, #4A90E2 100%);
+}
+  
+  
+    body {
+      background-color: var(--neutral-color);
+      color: var(--dark-color);
+    }
+  
+    h1,
+    h2,
+    h3 {
+      color: var(--base-color);
+    }
+  
+    p,
+    span {
+      color: var(--dark-color);
+    }
+  
+    a {
+      color: var(--accent-color);
+    }
+  
+    button, input[type="submit"] {
+      background-color: var(--base-color);
+      color: var(--light-color);
+  
+    }
+  
+    section {
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      border: 1px solid var(--neutral-color);
+  
+    }
+    .done{
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      border: 1px solid var(--neutral-color);
+    }
+  
+  
+    button:hover {
+      opacity: 0.8;
+      background-color: var(--accent-color);
+      color: var(--light-color);
+    }
+    input[type="submit"]:hover {
+      opacity: 0.8;
+      background-color: var(--accent-color);
+      color: var(--light-color);
+    }
+    
+    
+  
+    nav {
+      background-color: var(--base-color);
+      color: var(--light-color);
+    }
+  
+    nav a {
+      color: var(--light-color);
+    }
+  
+    nav a:hover {
+      color: var(--accent-color);
+    }
+  
+    footer {
+      background-color: var(--dark-color);
+      color: var(--light-color);
+    }
+  
+    footer a {
+      color: var(--light-color);
+    }
+  
+    footer a:hover {
+      color: var(--accent-color);
+    }
+  
+    footer ul li a {
+      color: var(--light-color);
+    }
+  footer p {
+    color: var(--light-color);
+  }
+body {
+    font-family: 'Poppins', sans-serif;
+    
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overscroll-behavior: none;
+}
+nav {
+    background: var(--base-color);
+    color: var(--light-color);
+    
+    box-shadow: 0 2px 8px rgba(26, 46, 69, 0.08);
+}
+nav a {
+    color: var(--light-color);
+
+    transition: color 0.2s;
+}
+nav a:hover { color: var(--accent-color); }
+nav {
+  padding: 10px 20px;
+        
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+}
+
+nav ul {
+  list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+}
+
+nav li {
+  margin: 0 15px;
+        display: inline;
+        cursor: pointer;
+        transition: all 0.3s ease;
+}
+
+nav a {
+  text-decoration: none;
+        color: white;
+        font-weight: bold;
+        position: relative;
+}
+
+nav a::after {
+    content: "";
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--neutral-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+nav .dropdown {
+    position: relative;
+}
+nav .dropdown-content {
+  display: none;
+        position: absolute;
+        background-color: var(--base-color);
+        min-width: 180px;
+        z-index: 1;
+        right: -55px;
+        margin-top: 10px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+}
+nav .dropdown-content a {
+  
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+}
+
+nav .dropdown-content a:hover {
+        background-color: #1A2E45;
+      }
+.home{
+    cursor: pointer;
+}
+.productsNav{
+    cursor: pointer;
+}
+.aboutNav{
+    cursor: pointer;
+}
+.contactNav{
+    cursor: pointer;
+}
+.privacyPolicy{
+    cursor: pointer;
+}
+.terms{
+    cursor: pointer;
+}
+#contact-us {
+    
+    
+    padding: 20px;
+    text-align: center;
+
+}
+
+#contact-us h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#contact-us p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#contact-us form {
+    margin-top: 20px;
+
+}
+
+#contact-us label {
+    
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+#contact-us input[type="text"],
+#contact-us input[type="email"],
+#contact-us textarea {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--neutral-color);
+    border-radius: 12px;
+}
+
+#contact-us input[type="submit"] {
+    
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+#contact-us h2 {
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+#contact-us ul {
+    list-style: none;
+    margin-top: 20px;
+}
+#contact-us ul li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.done{
+    
+    
+    max-width: 400px;
+    margin-left: 33vw;
+    margin-top: 10vh;
+    
+    border-radius: 12px;
+    padding: 20px;
+    
+}
+.done1{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+
+}
+.done2{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    
+}
+.done h1{
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.done p{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.message{
+    
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.close{
+    
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+footer {
+  background-color: var(--base-color);
+    color: var(--light-color);
+}
+
+footer a {
+  color: var(--accent-color);
+}
+
+footer a:hover {
+  color: var(--neutral-color);
+}
+
+
+footer p {
+  color: var(--light-color);
+}
+footer {
+    
+    text-align: center;
+    padding: 20px 0 10px 0;
+    margin-top: auto;
+}
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+footer ul li {
+    padding: 10px 20px;
+}
+footer ul li a {
+    
+    text-decoration: none;
+    font-weight: bold;
+}
+footer ul li a:hover {
+    
+    text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a class="home">Home</a></li>
+          <li><a class="productsNav">Products</a></li>
+          <li><a class="cartNav">Cart</a></li>
+          
+          <li class="dropdown">
+            
+              <a class="dropBtn">Menu</a>
+              <ul class="dropdown-content">
+                <li><a class="nameDrop"></a></li>
+              <li><a class="loginLogout"></a></li>
+              
+              <li><a class="aboutNav">About Us</a></li>
+          <li><a class="contactNav">Contact Us</a></li>
+              </ul>
+              
+            
+          </li>
+        </ul>
+      </nav>
+        <section id="contact-us">
+  <h1>Get in Touch</h1>
+  <p>Have a question or just want to say hello? We'd love to hear from you.</p>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="message">Message:</label>
+    <textarea id="message" name="message"></textarea><br><br>
+    <input type="submit" value="Send" id="submit">
+  </form>
+  <h2>Contact Information</h2>
+  <ul>
+    <li><strong>Address:</strong>Jamkhandi</li>
+    <li><strong>Phone:</strong>8073894427</li>
+    <li><strong>Email:</strong>sergiodragonov@gmail.com</li>
+    <li><strong>Website:</strong>ECommerceStore.com</li>
+  </ul>
+</section>
+<div class="done">
+
+</div>
+<footer>
+    <p>&copy; 2025 ECommerce Store. All rights reserved.</p>
+    <ul>
+        <li><a class="privacyPolicy">Privacy Policy</a></li>
+        <li><a class="terms">Terms of Service</a></li>
+    </ul>
+</footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            
+            const name =document.querySelector("#name");
+            const email =document.querySelector("#email");
+            const message =document.querySelector("#message");
+            const submit =document.querySelector("#submit");
+            const contactus =document.querySelector("#contact-us");
+            const done =document.querySelector(".done");
+            
+            const home = document.querySelector(".home");
+            const productsNav = document.querySelector(".productsNav");
+            const aboutNav = document.querySelector(".aboutNav");
+            const contactNav = document.querySelector(".contactNav");
+            let username = new URLSearchParams(window.location.search).get("username");
+
+            done.style.display = "none";
+               home.addEventListener("click", function () {
+        window.location.href = `indexM.html?username=${username}`; // Redirect to indexM.html with username as a query parameter
+    });
+    productsNav.addEventListener("click", function () {
+        window.location.href = `products.html?username=${username}`; // Redirect to indexM.html with username as a query parameter
+    });
+    aboutNav.addEventListener("click", function () {
+        window.location.href = `about.html?username=${username}`; // Redirect to indexM.html with username as a query parameter
+    });
+    contactNav.addEventListener("click", function () {
+        window.location.href = `contact.html?username=${username}`; // Redirect to indexM.html with username as a query parameter
+    });
+    document.querySelector(".cartNav").onclick = () => window.location.href = `cart.html?username=${username}`;
+    document.querySelector(".privacyPolicy").onclick = () => window.location.href = `privacy.html?username=${username}`;
+    document.querySelector(".terms").onclick = () => window.location.href = `terms.html?username=${username}`;
+
+    const loginLogout = document.querySelector(".loginLogout");
+    const nameDrop = document.querySelector(".nameDrop");
+    const menu = document.querySelector(".dropBtn");
+    const dropdownContent = document.querySelector(".dropdown-content");
+    
+
+      // Dropdown menu
+
+    menu.addEventListener("click", function() {
+        const dropdownContent = document.querySelector(".dropdown-content");
+        dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+        
+      });
+      nameDrop.textContent = username ? "Welcome " + username : "Welcome Guest";
+      loginLogout.textContent = username ? "Logout" : "Login";
+      loginLogout.addEventListener("click", function() {
+        if (username) {
+          // Logout logic
+          username = null;
+          window.location.href = "index.html";
+        } else {
+          // Redirect to login page
+          window.location.href = "index.html";
+        }
+      });
+      document.addEventListener("click", function(event) {
+        const dropdownContent = document.querySelector(".dropdown-content");
+        if (!event.target.closest(".dropdown") && dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        }
+      });
+      name.value = username;
+      name.disabled = true;
+
+            const div = document.createElement("div");
+                const div2 = document.createElement("div");
+                const h1 = document.createElement("h1");
+                const p = document.createElement("p");
+
+                const btn1 = document.createElement("button");
+                const btn2 = document.createElement("button");
+
+                div.classList.add("done1");
+                div2.classList.add("done2");
+                btn1.classList.add("message");
+                btn2.classList.add("close");
+                h1.textContent = "Message Sent";
+                p.textContent = "Thanks for your message, we will contact you within 2-3 working days";
+                btn1.textContent= "Message Again";
+                btn2.textContent= "Close";
+                btn1.addEventListener("click", function () {
+                    contactus.style.display = "block";
+                    done.style.display = "none";
+                    name.value = username;
+                    name.disabled = true;
+                    email.value = "";
+                    message.value = "";
+                });
+                btn2.addEventListener("click", function () {
+                    window.location.href = `indexM.html?username=${username}`; // Redirect to indexM.html with username as a query parameter
+                });
+                div.appendChild(h1);
+                div.appendChild(p);
+                done.appendChild(div);
+
+                div2.appendChild(btn1);
+                div2.appendChild(btn2);
+                done.appendChild(div2);
+
+
+
+            submit.addEventListener("click", function () {
+
+                event.preventDefault();
+                if (name.value === "" || email.value === "" || message.value === "") {
+                    alert("Please fill all the fields");
+                    return;
+                    
+                }else{
+                    name.style.border = "none";
+                    email.style.border = "none";
+                    message.style.border = "none";
+                }
+                contactus.style.display = "none";
+                done.style.display = "block";
+                
+                const useremail = email.value;
+                const usermessage = message.value;
+                
+                const newUser = {
+                    name: username,
+                    email: [useremail],
+                    message: [usermessage],
+                };
+                const contact = JSON.parse(localStorage.getItem("contactus")) || [];
+                let userExists = contact.find(user => user.name === username);
+                console.log(userExists);
+                
+                if (userExists) {
+                    userExists.message.push(usermessage);
+                    userExists.email.push(useremail);
+                    localStorage.setItem("contactus", JSON.stringify(contact));
+                } else {
+                    contact.push(newUser);
+                    localStorage.setItem("contactus", JSON.stringify(contact));
+                  
+                }
+                
+                
+                
+            });
+            
+            
+        });
+    </script>
+</body>
+</html>

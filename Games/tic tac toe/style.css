@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    background-color: #91C499;
+    text-align: center;
+}
+
+.container{
+    height: 70vh;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    margin-top: 60vmin;
+
+    
+}
+.game{
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+}
+.game1{
+    height: 70vh;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.box{
+    height: 18vmin;
+    width: 18vmin;
+
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    font-size: 8vmin;    
+    color: #b0413e;
+    background-color : #ACBEA3;
+
+}
+#reset-btn{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+}
+#newgame{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+}
+
+.hide{
+ display: none;
+}
+.msgcontainer{
+    height: 90vh;
+    font-size: 2rem;
+    margin-top: 40vmin;
+}
+
+.ask{
+    height: 10vh;
+    margin-top: 25vmin;
+    
+}
+.ask1{
+    margin-top: 5vmin ;
+}
+.but{
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+    margin-top: 10vmin;
+
+}
+.hide1{
+    display: none;
+}
+.name{
+    margin-bottom: 5vmin;
+}
+
+.ask2{
+    margin-top: 10vmin;
+    margin-bottom: 30vmin;
+}
+.hide2{
+    display: none;
+}
+.submit1{
+    padding: 0.2rem;
+    
+    font-size: 0.85rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;   
+}
+.submit2{
+    padding: 0.2rem;
+    
+    font-size: 0.85rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+
+}
+.next{
+    padding: 0.2rem;
+    font-size: 0.85rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+}
