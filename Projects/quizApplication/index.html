@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Application</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+  <style>
+    :root {
+      --primary-bg: #f6f8fa;
+      --secondary-bg: #fff;
+      --primary-color: #22223b;
+      --secondary-color: #4a4e69;
+      --accent: #3f8efc;
+      --accent-hover: #2563eb;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --border: #e0e6ed;
+      --button-text: #fff;
+      --progress-bg: #e0e6ed;
+      --progress-fill: #3f8efc;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--primary-bg);
+      color: var(--primary-color);
+      font-family: 'Poppins', Arial, sans-serif;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--secondary-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 2em 1em 1.5em 1em;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(67, 160, 71, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      max-width: 500px;
+      margin: 4vh auto 0 auto;
+      border-radius: 16px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.3em;
+    }
+    p {
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+      margin-bottom: 0.5em;
+    }
+    .topicsChoosing {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+    }
+    label {
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+      margin-right: 0.5em;
+    }
+    select {
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+      padding: 0.3em 0.7em;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--secondary-bg);
+      margin-bottom: 0.5em;
+    }
+    option {
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+    }
+    button {
+      background: var(--accent);
+      color: var(--button-text);
+      border: none;
+      padding: 0.6em 1.5em;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      margin-top: 1em;
+      transition: background 0.2s;
+      box-shadow: 0 2px 6px rgba(63, 142, 252, 0.08);
+    }
+    button:hover {
+      background: var(--accent-hover);
+    }
+    #quizContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      background-color: var(--secondary-bg);
+      max-width: 500px;
+      margin: 4vh auto 0 auto;
+      border-radius: 16px;
+      padding: 2em 1.5em 2em 1.5em;
+      box-shadow: 0 2px 16px rgba(63, 142, 252, 0.08);
+    }
+    .quizTitle {
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin-bottom: 0.5em;
+    }
+    #progressBar {
+      width: 100%;
+      height: 12px;
+      background: var(--progress-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.2em;
+    }
+    #progressFill {
+      height: 100%;
+      background: var(--progress-fill);
+      width: 0%;
+      transition: width 0.3s;
+    }
+    .questionDiv {
+      margin-bottom: 1em;
+      width: 100%;
+    }
+    .questionDiv p {
+      font-size: 1.15rem;
+      color: var(--primary-color);
+      margin-bottom: 0.6em;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 0.4em;
+      cursor: pointer;
+      font-size: 1.08rem;
+      color: var(--secondary-color);
+      padding-left: 0.3em;
+    }
+    .options input[type="radio"],
+    .options input[type="checkbox"] {
+      margin-right: 0.5em;
+      accent-color: var(--accent);
+    }
+    .feedback {
+      margin: 0.7em 0 0.5em 0;
+      font-weight: 500;
+      font-size: 1.08rem;
+    }
+    .feedback.correct {
+      color: var(--success);
+    }
+    .feedback.incorrect {
+      color: var(--danger);
+    }
+    @media (max-width: 600px) {
+      header, #quizContainer {
+        max-width: 98vw;
+        padding: 1em 0.5em 1.5em 0.5em;
+      }
+      .quizTitle {
+        font-size: 1.2rem;
+      }
+    }
+    .loader {
+      border: 4px solid var(--border);
+      border-top: 4px solid var(--accent);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      animation: spin 1s linear infinite;
+      margin: 2em auto;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Code Quiz</h1>
+    <p>Welcome! Test your knowledge on various topics.</p>
+    <div class="topicsChoosing">
+      <div>
+        <label for="topics">Topics</label>
+        <select name="topics" id="topics">
+          <option value="select">Select</option>
+          <option value="Linux">Linux</option>
+          <option value="Bash">Bash</option>
+          <option value="Docker">Docker</option>
+          <option value="SQL">SQL</option>
+          <option value="CMS">CMS</option>
+          <option value="Code">Code</option>
+          <option value="DevOps">DevOps</option>
+          <option value="React">React</option>
+          <option value="Laravel">Laravel</option>
+          <option value="Postgres">Postgres</option>
+          <option value="Django">Django</option>
+          <option value="CPanel">CPanel</option>
+          <option value="nodejs">nodejs</option>
+          <option value="WordPress">WordPress</option>
+          <option value="Next.js">Next.js</option>
+          <option value="VueJs">VueJs</option>
+          <option value="ApacheKafka">ApacheKafka</option>
+          <option value="HTML">HTML</option>
+        </select>
+      </div>
+      <div>
+        <label for="difficulty">Difficulty</label>
+        <select name="difficulty" id="difficulty">
+          <option value="select">Select</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+      <div>
+        <label for="limit">No of Questions</label>
+        <select name="limit" id="limit">
+          <option value="select">Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <button id="startQuiz">Start Quiz</button>
+    </div>
+  </header>
+
+  <div class="loader" id="loader"></div>
+
+  <div id="quizContainer">
+    <h2 class="quizTitle">Quiz Questions</h2>
+    <div id="progressBar"><div id="progressFill"></div></div>
+    <div id="questions"></div>
+    <div class="options"></div>
+    <div id="feedback"></div>
+    <button class="NextQuestion" style="display:none;">Next</button>
+    <button id="submitAnswers" style="display: none;">Submit Answers</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    //   const apiKey = "ErenvIPvyeQ3RmmK1l1HJXKOG1cUVmE0H4KGXlL8";
+    const apiKey = "CQFgL13qvBUKEuxsL2bsEcNOKr3UTIfzTtW5fMg5";
+      const startBtn = document.getElementById('startQuiz');
+      const loader = document.getElementById('loader');
+      const quizContainer = document.getElementById('quizContainer');
+      const questionsContainer = document.getElementById('questions');
+      const progressFill = document.getElementById('progressFill');
+      const feedbackDiv = document.getElementById('feedback');
+      const nextBtn = document.querySelector('.NextQuestion');
+      const submitBtn = document.getElementById('submitAnswers');
+      let data = [];
+      let indexes = 0;
+      let score = 0;
+      let userAnswers = [];
+
+      function showLoader(show) {
+        loader.style.display = show ? 'block' : 'none';
+      }
+
+      function resetQuizUI() {
+        questionsContainer.innerHTML = '';
+        feedbackDiv.innerHTML = '';
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'none';
+        progressFill.style.width = '0%';
+        indexes = 0;
+        score = 0;
+        userAnswers = [];
+      }
+
+      function updateProgress() {
+        const percent = ((indexes) / data.length) * 100;
+        progressFill.style.width = percent + '%';
+      }
+
+      function renderQuestion() {
+        questionsContainer.innerHTML = '';
+        feedbackDiv.innerHTML = '';
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'none';
+
+        if (indexes >= data.length) return;
+
+        updateProgress();
+
+        const q = data[indexes];
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'questionDiv';
+        questionDiv.innerHTML = `<p>${indexes + 1}. ${q.question}</p>`;
+
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'options';
+
+        const isMultiple = q.multiple_correct_answers === 'true';
+        const inputType = isMultiple ? 'checkbox' : 'radio';
+        if (isMultiple) {
+          optionsDiv.innerHTML += `<p style="font-size:0.98em;color:var(--secondary-color);margin-bottom:0.5em;">(Select all that apply)</p>`;
+        } else {
+          optionsDiv.innerHTML += `<p style="font-size:0.98em;color:var(--secondary-color);margin-bottom:0.5em;">(Select one answer)</p>`;
+        }
+
+        ['a','b','c','d','e','f'].forEach(letter => {
+          const answerText = q.answers[`answer_${letter}`];
+          if (answerText) {
+            const id = `q${indexes}_${letter}`;
+            optionsDiv.innerHTML += `
+              <label>
+                <input type="${inputType}" name="question${indexes}" id="${id}" value="${letter}">
+                ${answerText}
+              </label>
+            `;
+          }
+        });
+
+        questionDiv.appendChild(optionsDiv);
+        questionsContainer.appendChild(questionDiv);
+
+        // Enable Next only after selection
+        optionsDiv.addEventListener('change', () => {
+          const selected = optionsDiv.querySelectorAll(`input[name="question${indexes}"]:checked`);
+          nextBtn.style.display = selected.length > 0 && indexes < data.length - 1 ? 'inline-block' : 'none';
+          submitBtn.style.display = selected.length > 0 && indexes === data.length - 1 ? 'inline-block' : 'none';
+        });
+      }
+
+      function checkAnswer() {
+        const q = data[indexes];
+        const isMultiple = q.multiple_correct_answers === 'true';
+        const optionsDiv = document.querySelector('.options');
+        const selectedInputs = Array.from(optionsDiv.querySelectorAll(`input[name="question${indexes}"]:checked`));
+        let correct = true;
+
+        // Save user answer for review
+        userAnswers[indexes] = selectedInputs.map(input => input.value);
+
+        if (selectedInputs.length === 0) {
+          correct = false;
+        } else if (isMultiple) {
+          // For multiple correct, all correct and only correct must be selected
+          let allCorrect = true, allOnly = true;
+          ['a','b','c','d','e','f'].forEach(letter => {
+            const answerKey = `answer_${letter}_correct`;
+            const shouldBeChecked = q.correct_answers[answerKey] === 'true';
+            const isChecked = selectedInputs.some(input => input.value === letter);
+            if (shouldBeChecked !== isChecked) {
+              allCorrect = false;
+            }
+          });
+          correct = allCorrect && selectedInputs.length > 0;
+        } else {
+          // For single correct
+          const answerKey = `answer_${selectedInputs[0].value}_correct`;
+          correct = q.correct_answers[answerKey] === 'true';
+        }
+
+        if (correct) {
+          score++;
+          feedbackDiv.innerHTML = `<div class="feedback correct">Correct!</div>`;
+        } else {
+          feedbackDiv.innerHTML = `<div class="feedback incorrect">Incorrect.</div>`;
+        }
+      }
+
+      startBtn.addEventListener('click', function() {
+        // Validate selections
+        const topic = document.getElementById('topics').value;
+        const difficulty = document.getElementById('difficulty').value;
+        const limit = document.getElementById('limit').value;
+        if (topic === 'select' || difficulty === 'select' || limit === 'select') {
+          alert('Please select topic, difficulty, and number of questions.');
+          return;
+        }
+
+        document.querySelector('header').style.display = "none";
+        showLoader(true);
+        resetQuizUI();
+
+        fetch(`https://quizapi.io/api/v1/questions?apiKey=${apiKey}&category=${topic}&difficulty=${difficulty}&limit=${limit}`)
+          .then(response => response.json())
+          .then(json => {
+            data = json;
+            if (!Array.isArray(data) || data.length === 0) {
+              throw new Error('No questions found for your selection.');
+            }
+            quizContainer.style.display = 'flex';
+            showLoader(false);
+            renderQuestion();
+          })
+          .catch(error => {
+            showLoader(false);
+            alert('Failed to load quiz questions. Please check your API key and try again.\n' + error.message);
+            document.querySelector('header').style.display = "flex";
+          });
+      });
+
+      nextBtn.addEventListener('click', function() {
+        checkAnswer();
+        setTimeout(() => {
+          indexes++;
+          if (indexes < data.length) {
+            renderQuestion();
+          }
+        }, 700);
+      });
+
+      submitBtn.addEventListener('click', function() {
+        checkAnswer();
+        setTimeout(() => {
+          // Show score and review
+          questionsContainer.innerHTML = '';
+          feedbackDiv.innerHTML = '';
+          progressFill.style.width = '100%';
+          document.querySelector(".quizTitle").textContent = "Score Card";
+          let p = document.createElement('p');
+          p.innerHTML = `<strong>Your score is ${score} out of ${data.length}</strong>`;
+          questionsContainer.appendChild(p);
+
+          // Review answers
+          data.forEach((q, idx) => {
+            const userAns = userAnswers[idx] || [];
+            const correctAns = [];
+            ['a','b','c','d','e','f'].forEach(letter => {
+              if (q.correct_answers[`answer_${letter}_correct`] === 'true') {
+                correctAns.push(letter);
+              }
+            });
+            const qDiv = document.createElement('div');
+            qDiv.style.margin = '1em 0';
+            qDiv.innerHTML = `<div style="font-weight:500;">${idx+1}. ${q.question}</div>
+              <div style="font-size:0.98em;">
+                <span style="color:var(--accent);">Your answer:</span> ${userAns.length ? userAns.join(', ') : '<em>None</em>'}
+                <br>
+                <span style="color:var(--success);">Correct answer:</span> ${correctAns.join(', ')}
+              </div>`;
+            questionsContainer.appendChild(qDiv);
+          });
+
+          // New quiz button
+          let btn = document.createElement('button');
+          btn.innerText = "New Quiz";
+          btn.onclick = () => location.reload();
+          questionsContainer.appendChild(btn);
+
+          nextBtn.style.display = 'none';
+          submitBtn.style.display = 'none';
+        }, 700);
+      });
+    });
+  </script>
+</body>
+</html>
+
+<!-- 480 lines of code || 1 file || Quiz Application || 29 May 2025 1:25PM 😊😊😊 -->
